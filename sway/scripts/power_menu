@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+power_option=$( echo -e " Suspend\n Reboot\n Poweroff\n Logout\n Lock" | wofi -i --dmenu --cache-file=/dev/null | awk '{print tolower($2)}' )
+
+case $power_option in 
+    poweroff)
+        poweroff
+	;;
+    reboot)
+        reboot
+        ;;
+    suspend)
+        systemctl suspend
+        ;;
+    lock)
+        swaylock -f -c 414a4c
+        ;;
+    logout)
+        swaymsg exit
+        ;;
+esac

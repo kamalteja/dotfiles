@@ -1,0 +1,41 @@
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+
+# Your preferred terminal emulator
+set $term terminator
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu wofi --show=drun --allow-images --gtk-dark
+
+# Lock
+set $lock swaylock -f -c 414a4c
+
+#Monitors
+set $built_in eDP-1
+set $work_1 "Philips Consumer Electronics Company PHL 272B8Q UK02049032890"
+set $work_2 "Philips Consumer Electronics Company PHL 272B8Q UK02049033105"
+set $work_3 "Philips Consumer Electronics Company 273ELH AU11403005787"
+set $home_wide "Unknown MAG342CQRV DB6H230C00348"
+set $home_1 "Unknown EM2470HB 0000000"
+
+### Idle configuration
+#
+# Example configuration:
+#
+ exec swayidle -w \
+          timeout 300 'swaylock -f -c 000000' \
+          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+#Include config
+include /etc/sway/config.d/*
+include ~/.config/sway/config.d/*

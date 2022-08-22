@@ -1,0 +1,32 @@
+##                                      ##
+#Variables defined in .config/sway/config#
+##                                      ##
+
+### Output configuration
+#
+output * bg /usr/share/backgrounds/default.png fill
+
+#Work layout
+output $built_in resolution 1920x1080 position 0,0
+output $work_1 resolution 2560x1440 position 1920,0
+output $work_2 resolution 2560x1440 position 4480,0
+
+workspace 1 output $work_1
+workspace 2 output $work_1
+workspace 3 output $work_2
+workspace 4 output $work_2
+workspace 9 output $work_3
+workspace 10 output $work_3
+
+
+#Home layout
+#output $built_in resolution 1920x1080 position 0,0
+#output $home_wide resolution 3440x1440 position 1920,0
+#output $home_1 resolution 2560x1440 position 5360,0
+#
+#
+#workspace 1 output $home_wide
+#workspace 2 output $home_wide
+#workspace 3 output $home_1
+#workspace 4 output $home_1
+#workspace 9 output $built_in

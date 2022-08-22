@@ -1,0 +1,4 @@
+#Disables build in display on lid close
+
+bindswitch --reload --locked lid:on output $built_in disable
+bindswitch --reload --locked lid:off output $built_in enable

@@ -1,0 +1,6 @@
+# Keyboard config
+input type:keyboard {
+    xkb_layout se
+    xkb_numlock enabled
+    xkb_capslock disabled
+}

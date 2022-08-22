@@ -1,0 +1,3 @@
+# notification daemon
+
+exec mako --config /home/kamalg/.config/mako/config

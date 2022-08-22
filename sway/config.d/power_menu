@@ -1,0 +1,3 @@
+# Power menu
+
+bindsym $mod+p exec bash ~/.config/sway/scripts/power_menu
