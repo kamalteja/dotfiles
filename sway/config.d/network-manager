@@ -1,0 +1,2 @@
+# Add Network manager applet to sway/way bar
+exec --no-startup-id nm-applet --indicator
