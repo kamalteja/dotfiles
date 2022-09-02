@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+amixer sget Master | grep -q "\[on\]"
+
+[[ $? == 0 ]] && amixer -q sset Master mute || amixer -q sset Master unmute

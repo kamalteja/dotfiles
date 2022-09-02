@@ -4,3 +4,7 @@ input type:keyboard {
     xkb_numlock enabled
     xkb_capslock disabled
 }
+
+input type:touchpad {
+    tap enabled
+}

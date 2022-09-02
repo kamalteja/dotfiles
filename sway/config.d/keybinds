@@ -4,7 +4,7 @@
 #
     # Start a terminal
     bindsym $mod+Return exec $term
-    bindsym $mod+Shift+Return exec terminator --title "terminator-float"
+    bindsym $mod+Shift+Return exec $term --title "terminator-float"
 
     # Lock screen
     bindsym $mod+l exec $lock
@@ -144,3 +144,10 @@ bindsym $mod+r mode "resize"
 # Bitwarden dmenu
 #
     bindsym $mod+b exec bwmenu -p --auto-lock -1
+
+#
+# Volume contorl
+#
+    bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+
+    bindsym XF86AudioLowerVolume exec amixer -q sset Master 5%-
+    bindsym XF86AudioMute exec .config/sway/scripts/volume_state
