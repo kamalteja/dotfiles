@@ -1,6 +1,7 @@
-# Don't print a new line at the start of the prompt
-add_newline = true
 format = "$all"
+
+# Print a new line at the start of the prompt
+add_newline = true
 
 [character]
 success_symbol = "[➜](bold green)"
@@ -51,7 +52,7 @@ format = '[\[$time\]]($style) '
 [custom.screen]
 command = "echo screen-$STY"
 when = """ test -n "$STY" """
-format = "[$output]($style)"
+format = "[$output]($style) "
 
 # Development
 [status]
