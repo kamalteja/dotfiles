@@ -4,7 +4,7 @@
 #
     # Start a terminal
     bindsym $mod+Return exec $term
-    bindsym $mod+Shift+Return exec $term --title "terminator-float"
+    bindsym $mod+Shift+Return exec $term_float
 
     # Lock screen
     bindsym $mod+l exec $lock
@@ -86,10 +86,10 @@
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+f floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+Shift+f focus mode_toggle
+    bindsym $mod+Shift+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -129,11 +129,6 @@ bindsym $mod+r mode "resize"
 #
     bindsym XF86MonBrightnessDown exec brightnessctl -c backlight set 5%-
     bindsym XF86MonBrightnessUp exec brightnessctl -c backlight set 5%+
-#
-#Audio
-#
-#    bindsym XF86AudioLowerVolume exec brightnessctl -c backlight set 5%-
-#    bindsym XF86AudioRaiseVolume exec brightnessctl -c backlight set 5%-
 
 #
 # Screen capture (print screen)
@@ -148,6 +143,12 @@ bindsym $mod+r mode "resize"
 #
 # Volume contorl
 #
-    bindsym XF86AudioRaiseVolume exec amixer -q sset Master 100+
-    bindsym XF86AudioLowerVolume exec amixer -q sset Master 100-
+    bindsym XF86AudioRaiseVolume exec amixer -q sset Master 1000+
+    bindsym XF86AudioLowerVolume exec amixer -q sset Master 1000-
     bindsym XF86AudioMute exec .config/sway/scripts/volume_state
+
+#
+# Htop terminal
+#
+
+    bindsym $mod+Shift+h exec $term --title 'terminal-float-htop' --command htop

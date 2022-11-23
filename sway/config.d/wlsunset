@@ -1,0 +1,2 @@
+### wlsunset
+exec wlsunset -l 56.16 -L 15.59 -t 2400 -T 4800 -d 3600

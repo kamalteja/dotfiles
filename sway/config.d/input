@@ -5,6 +5,7 @@ input type:keyboard {
     xkb_capslock disabled
 }
 
+# Touchpad config
 input type:touchpad {
     tap enabled
 }

@@ -2,8 +2,9 @@
 
 for_window [app_id="pavucontrol"] floating enable, resize set width 40 ppt height 30 ppt
 for_window [app_id="org.gnome.Calendar"] floating enable, resize set width 40 ppt height 30 ppt
-for_window [title="terminator-vpn-manage.*"] floating enable, resize set width 30 ppt height 40 ppt
-for_window [title="terminator-float"] floating enable, resize set width 30 ppt height 40 ppt, border pixel 3
+for_window [title="terminal-float"] floating enable, resize set width 30 ppt height 40 ppt, border pixel 3
+for_window [title="terminal-float-htop"] floating enable, resize set width 2560 pixel height 720 pixel, border pixel 3
 for_window [class="Code"] move to workspace 2, focus, layout tabbed
 for_window [class="Google-chrome" title="Microsoft Teams.*"] move to workspace 10
+for_window [title="Microsoft Teams.*"] move to workspace 10
 for_window [title="Evolution"] move to workspace 10
