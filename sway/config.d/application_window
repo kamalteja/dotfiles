@@ -8,3 +8,4 @@ for_window [class="Code"] move to workspace 2, focus, layout tabbed
 for_window [class="Google-chrome" title="Microsoft Teams.*"] move to workspace 10
 for_window [title="Microsoft Teams.*"] move to workspace 10
 for_window [title="Evolution"] move to workspace 10
+for_window [title="Thunderbird"] move to workspace 10

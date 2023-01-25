@@ -37,6 +37,10 @@ set $home_1 "Unknown EM2470HB 0000000"
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+
+# Border
+default_border pixel 3
+
 #Include config
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*

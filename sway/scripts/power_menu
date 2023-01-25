@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-power_option=$( echo -e " Suspend\n Reboot\n Poweroff\n Logout\n Lock" | wofi -i --dmenu --cache-file=/dev/null | awk '{print tolower($2)}' )
+power_option=$( echo -e " Suspend\n Poweroff\n Reboot\n Logout\n Lock" | wofi -i --dmenu --cache-file=/dev/null | awk '{print tolower($2)}' )
 
 case $power_option in 
     poweroff)
