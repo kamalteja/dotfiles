@@ -27,22 +27,37 @@ function venv --description 'Creates python virtual environment'
         return
     end
 
+    set virtualenv_path "$_flag_v"
+    set install_pkg "$_flag_install"
+
+    if test -z "$virtualenv_path"
+        set venv_in_cwd (find . -maxdepth 1 -type d -name '.venv*' -printf "%f\n")
+        if test -n "$venv_in_cwd"
+            set virtualenv_path (pwd)/"$venv_in_cwd"
+        end
+    end
+
     if begin
-        test -z "$VIRTUAL_ENV"; and test ! -n "$_flag_v"
+        test -z "$VIRTUAL_ENV"; and test ! -n "$virtualenv_path"
         end
         echo "[-] Missing virutal Environment path"
         return 1
     end
 
-    set python_path "$_flag_p"
-    set vitrual_env "$_flag_v"
-    set install_pkg "$_flag_install"
-
-    set virtualenv_path $_flag_v
     if test -n "$VIRTUAL_ENV"
         set virtualenv_path (dirname $VIRTUAL_ENV)
     end
-    echo "[+] Configured Virtual Environment Path: $virtualenv_path"
+
+    # Expanding path to realpath
+    set virtualenv_path (realpath "$virtualenv_path")
+
+    # Colors
+    set start "\x1b[33m"
+    set end "\x1b[0m"
+    if string match -qr (pwd) "$virtualenv_path"
+        set start "\x1b[32m"
+    end
+    echo -e "$start""[+] Configured Virtual Environment Path: $virtualenv_path$end"
 
     set venv_path "$virtualenv_path/venv"
     
@@ -78,11 +93,11 @@ function venv --description 'Creates python virtual environment'
             end
         end
         # Creating virtual env
-        "$python_path" -m venv "$venv_path" --upgrade-deps
+        "$python_path" -m venv "$venv_path" --prompt "venv_"(python --version | rg -o '[\d.]+')
     end
 
     if test ! -d "$venv_path"
-        echo "[-] Configured Virtual Environment not found ($venv_path)"
+        echo -e "\x1b[31m[-] Configured Virtual Environment not found ($venv_path)$end"
         return 1
     end
     # Adding more paths to python path
@@ -97,6 +112,8 @@ function venv --description 'Creates python virtual environment'
     end
 
     # After sourcing venv. Can directly use python (instaed of python_path)
+    #pip install --upgrade pip
+
     if begin
             test -n "$_flag_new"; or test -n "$_flag_install_deps"
         end
