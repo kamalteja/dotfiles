@@ -93,7 +93,8 @@ function venv --description 'Creates python virtual environment'
             end
         end
         # Creating virtual env
-        "$python_path" -m venv "$venv_path" --prompt "venv_"(python --version | rg -o '[\d.]+')
+        "$python_path" -m venv "$venv_path" --prompt "venv_"("$python_path" --version | rg -o '[\d.]+')
+	#virtualenv -p "$python_path" --prompt "venv_"("$python_path" --version | rg -o '[\d.]+') "$venv_path"
     end
 
     if test ! -d "$venv_path"
