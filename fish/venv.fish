@@ -87,14 +87,17 @@ function venv --description 'Creates python virtual environment'
         if test -d "$venv_path"
             set resp (read -l -P "Override $venv_path directory (y/n)? ")
             if test "$resp" = y
+                echo "[-] Deleting existing venv: $venv_path"
                 rm -rf $venv_path
             else
                 return 1
             end
         end
         # Creating virtual env
-        "$python_path" -m venv "$venv_path" --prompt "venv_"("$python_path" --version | rg -o '[\d.]+')
-	#virtualenv -p "$python_path" --prompt "venv_"("$python_path" --version | rg -o '[\d.]+') "$venv_path"
+        set venv_prompt "venv_"("$python_path" --version | rg -o '[\d.]+') 
+        echo "Python path: $python_path, venv path: $venv_path,  Prompt: $venv_prompt"
+        "$python_path" -m venv "$venv_path" --prompt "$venv_prompt"
+	#virtualenv -p "$python_path" --prompt "$venv_prompt" "$venv_path"
     end
 
     if test ! -d "$venv_path"
@@ -113,12 +116,12 @@ function venv --description 'Creates python virtual environment'
     end
 
     # After sourcing venv. Can directly use python (instaed of python_path)
-    #pip install --upgrade pip
+    pip install --upgrade pip
 
     if begin
             test -n "$_flag_new"; or test -n "$_flag_install_deps"
         end
-        python -m pip install -r $virtualenv_path/requirements.txt
+	python -m pip install -r $virtualenv_path/requirements.txt
 
     else if test -n "$_flag_install"
         python -m pip install "$_flag_install"
